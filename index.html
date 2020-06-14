@@ -23,28 +23,41 @@
     <script>
       let cv
       let ctx
-      let x = 320
-      let y = 450
-      let vx = 5
-      let vy = -25
+      let nBalls = 50
+      let x = []
+      let y = []
+      let vx = []
+      let vy = []
+      let r = []
       function drawFrame() {
         ctx.clearRect(0,0,640,480)
-        ctx.beginPath()
-        ctx.arc(x, y, 30, 0, Math.PI * 2)
-        ctx.closePath()
-        ctx.stroke()
+        for (let i = 0; i < nBalls; i++){
+          ctx.beginPath()
+          ctx.arc(x[i], y[i], r[i], 0, Math.PI * 2)
+          ctx.closePath()
+          ctx.stroke()
+        }
         /////////////////////////////
-        x = x + vx
-        y = y + vy
-        if (x > 630 || x < 30) vx = -vx
-        if (y > 450 ) vy = -vy
-        else          vy = vy + 1
+        for (let i = 0; i < nBalls; i++){
+          x[i] = x[i] + vx[i]
+          y[i] = y[i] + vy[i]
+          if (x[i] > 630 || x[i] < 30) vx[i] = -vx[i]
+          if (y[i] > 450 ) vy[i] = -vy[i]
+          else             vy[i] = vy[i] + 1
+        }
         requestAnimationFrame(drawFrame)
       }
       
       onload = function () {
         cv = document.getElementById("canvas0")
         ctx = cv.getContext("2d")
+        for (let i = 0; i< nBalls; i++){
+          x.push(Math.random() * 640)
+          y.push(Math.random() * 400)
+          vx.push(Math.random() * 20) - 10
+          vy.push(0)
+          r.push.(Math.random() * 30) + 20
+        }  
         requestAnimationFrame(drawFrame)
       }
       function doCalc(){
