@@ -16,6 +16,10 @@
     <input id="wareki" type="number">
     <button onclick="doCalc()"> &gt;&gt; 計算 &gt;&gt; </button>
     <span id="ad">???</span>
+    <!-- ここから6限-->
+    <canvas id="canvas0" width="640" height="400", style="background: #efe;">
+    </canvas>
+ 
     <script>
       function doCalc(){
         const wain = document.getElementById("wareki")
@@ -30,7 +34,10 @@
         if (g=="t") ad = wa + 1911
         if (g=="m") ad = wa + 1868
         adout.innerHTML = ad
-        console.log(wa+2018)
+        //////////////////////////////
+        const cv = document.getElementById("canvas0")
+        let ctx = cv.getContext("2d")
+        ctx.strokeRect(300, 100, 200, 20)
       }
     </script>
   </body>
