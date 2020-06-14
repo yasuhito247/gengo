@@ -28,9 +28,13 @@
       let y = []
       let vx = []
       let vy = []
-      let r = []
+      let myx = 320
+      let myY = 450
       function drawFrame() {
         ctx.clearRect(0,0,640,480)
+        ctx.linewidth = 3
+        ctx.fillStyle = "#00f"
+        ctx.fillRect(myX, myY, 30, 10)
         for (let i = 0; i < nBalls; i++){
           ctx.beginPath()
           ctx.arc(x[i], y[i], r[i], 0, Math.PI * 2)
@@ -47,7 +51,10 @@
         }
         requestAnimationFrame(drawFrame)
       }
-      
+      function keyPressed(e){
+        if (e.key == "ArrowRight") myX += 10
+        if (e.key == "ArrowLeft") myX += -10
+      }
       onload = function () {
         cv = document.getElementById("canvas0")
         ctx = cv.getContext("2d")
@@ -58,6 +65,7 @@
           vy.push(0)
           r.push(Math.random() * 30 + 20)
         }  
+        document.addEventListener("keydown",keyPressed)
         requestAnimationFrame(drawFrame)
       }
       function doCalc(){
