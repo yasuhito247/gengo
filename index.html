@@ -21,6 +21,24 @@
     </canvas>
  
     <script>
+      let cv
+      let ctx
+      
+      function drawFrame() {
+        
+        ctx.beginPath()
+        ctx.arc(320, 240, 30, 0, Math.PI * 2)
+        ctx.closePath()
+        ctx.stroke()
+        
+        requestAnimationFrame(drawFrame)
+      }
+      
+      onload = function () {
+        cv = document.getElementById("canvas0")
+        ctx = cv.getContext("2d")
+        requestAnimationFrame(drawFrame)
+      }
       function doCalc(){
         const wain = document.getElementById("wareki")
         const adout = document.getElementById("ad")
@@ -34,10 +52,6 @@
         if (g=="t") ad = wa + 1911
         if (g=="m") ad = wa + 1868
         adout.innerHTML = ad
-        //////////////////////////////
-        const cv = document.getElementById("canvas0")
-        let ctx = cv.getContext("2d")
-        ctx.strokeRect(300, 100, 200, 20)
       }
     </script>
   </body>
