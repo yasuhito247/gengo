@@ -6,8 +6,32 @@
   </head>
   <body>
     <h1>元号変換アプリ</h1>
-    <input type="number">
-    <button> &gt;&gt; 計算 &gt;&gt; </button>
-    <span>???<\span>
+    <select　id="gengo">
+      <option value="r">令和</option>
+      <option value="h">平成</option>
+      <option value="s>昭和</option>
+      <option value="t">大正</option>
+      <option value="m">明治</option>
+    </select>
+    <input id="wareki" type="number">
+    <button onclick="doCalc()"> &gt;&gt; 計算 &gt;&gt; </button>
+    <span id="ad">???</span>
+    <script>
+      fucntion doCalc(){
+        let wain = document.getElementById("wareki")
+        let adout = document.getElementById("ad")
+        let gsel = document.getElementById("gengo")
+        let wa = parseInt(wain.value)
+        let g = gsel.value
+        let ad
+        if (g=="r") ad = wa + 2018
+        if (g=="h") ad = wa + 1988
+        if (g=="s") ad = wa + 1925
+        if (g=="t") ad = wa + 1911
+        if (g=="m") ad = wa + 1868
+        adout.innerHTML = ad
+        console.log(wa+2018)
+      }
+    </script>
   </body>
 </html>
